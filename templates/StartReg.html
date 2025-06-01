@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .event {
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 5px solid #007bff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    form {
+      margin-top: 30px;
+      display: none;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .success {
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Available Events</h2>
+    <div id="eventList"></div>
+
+    <form id="registrationForm">
+      <h3>Register for: <span id="selectedEventName"></span></h3>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <button type="submit">Submit Registration</button>
+      <div class="success" id="successMessage"></div>
+    </form>
+  </div>
+
+  <script>
+    const events = [
+      "Tech Conference 2025",
+      "Jazz in the Park",
+      "Startup Networking Night",
+      "Food & Wine Festival",
+      "Community Yoga Class"
+    ];
+
+    const eventList = document.getElementById('eventList');
+    const form = document.getElementById('registrationForm');
+    const selectedEventName = document.getElementById('selectedEventName');
+    const successMessage = document.getElementById('successMessage');
+
+    events.forEach(event => {
+      const div = document.createElement('div');
+      div.className = 'event';
+      div.innerHTML = `
+        <span>${event}</span>
+        <button onclick="startRegistration('${event}')">Register</button>
+      `;
+      eventList.appendChild(div);
+    });
+
+    function startRegistration(eventName) {
+      selectedEventName.textContent = eventName;
+      form.style.display = 'block';
+      successMessage.textContent = '';
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (name && email) {
+        successMessage.textContent = `Thank you, ${name}! You are registered for "${selectedEventName.textContent}".`;
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browse Events by Category</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Find Events by Category</h2>
+    <select id="categorySelect" onchange="filterEvents()">
+      <option value="all">-- Select a Category --</option>
+      <option value="conference">Conference</option>
+      <option value="concert">Concert</option>
+      <option value="networking">Networking</option>
+      <option value="workshop">Workshop</option>
+      <option value="festival">Festival</option>
+    </select>
+    <ul id="eventList"></ul>
+  </div>
+
+  <script>
+    const events = [
+      { title: "Tech Innovators Conference 2025", category: "conference" },
+      { title: "Summer Beats Music Festival", category: "concert" },
+      { title: "Startup Networking Night", category: "networking" },
+      { title: "Digital Marketing Workshop", category: "workshop" },
+      { title: "Wollongong Food & Wine Festival", category: "festival" },
+      { title: "AI & Machine Learning Conference", category: "conference" },
+      { title: "Jazz in the Park", category: "concert" },
+      { title: "Women in Business Meetup", category: "networking" }
+    ];
+
+    function filterEvents() {
+      const selectedCategory = document.getElementById('categorySelect').value;
+      const list = document.getElementById('eventList');
+      list.innerHTML = '';
+
+      const filtered = selectedCategory === 'all'
+        ? events
+        : events.filter(event => event.category === selectedCategory);
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<li>No events found for this category.</li>';
+      } else {
+        filtered.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = event.title;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    // Load all events initially
+    filterEvents();
+  </script>
+</body>
+</html>

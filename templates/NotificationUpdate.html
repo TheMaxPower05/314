@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Update Notification</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background: #f4f4f4; }
+    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+    button { background-color: #007bff; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register for Event Updates</h2>
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <select id="event">
+      <option value="event1">Tech Conference 2025</option>
+      <option value="event2">Jazz Night</option>
+    </select>
+    <button onclick="register()">Register</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function register() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const eventId = document.getElementById('event').value;
+
+      fetch('/api/register-for-updates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, eventId })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('message').textContent = data.message;
+      });
+    }
+  </script>
+</body>
+</html>

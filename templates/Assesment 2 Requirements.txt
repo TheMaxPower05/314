@@ -1,0 +1,88 @@
+Assesment 2 Requirements
+
+
+
+
+Account Management: 
+- As a new user, I want to register for an account using my email and password so that I can access the platform's features like event registration. 
+- As a registered user, I want to log in to my account securely so that I can manage my profile and registrations. 
+- As a registered user, I want to be able to reset my password if I forget it so that I can regain access to my account. 
+- As a registered user, I want to view and update my profile information so that my details are always current. 
+
+Event Discovery: 
+- As a user, I want to browse a list of all available events so that I can see what's happening. 
+- As a user, I want to search for events using keywords (e.g., event name, description) so that I can find specific events quickly. 
+- As a user, I want to filter events by category (e.g., conference, concert, networking) so that I can find events relevant to my interests. 
+- As a user, I want to filter events by location so that I can find events near me. 
+- As a user, I want to filter events by price range (including free) so that I can find events within my budget. 
+
+Event Registration & Ticketing:  
+- As a logged-in user, I want to select an event and start the registration process so that I can sign up to attend. 
+- As a logged-in user, I want to choose between available ticket types (e.g., General, VIP/Premium) for an event so that I can select the experience I prefer. 
+- As a logged-in user, I want to receive a digital ticket (e.g., QR code, downloadable PDF) after successful registration so that I have proof of purchase and can check in at the event.
+
+
+Notifications:  
+- As a registered user, I want to receive email notifications about event reminders (e.g., 24 hours before) so that I don't miss events I've signed up for. 
+- As a registered user, I want to receive notifications if an event I registered for is updated (e.g., time change, venue change) so that I stay informed. 
+- As a registered user, I want to be notified immediately if an event I registered for is cancelled so that I am aware and know the next steps. 
+- As a registered user for a cancelled paid event, I want to receive notification about the automatic refund process so that I know my payment is being returned.
+
+
+Account Management:
+Q. Write a javascript web page for a new user registering for an account where they enter a username and password  
+A. New User.html
+
+Q. Write a javascript web page for an existing user to login using their email address and password
+A. Login.html
+
+Q. Write a javascript web page where a logged in user can request to change their password.
+A. Changepassword.html
+
+Q. Write a javascript web page where a logged in user can request to change their personal details.
+A. Update Details.html
+
+
+Event Discovery: 
+Q. Write a javascript web page where a logged in user can browse for events in their area when promoted
+A. EvenSearch.html
+
+Q. Write a javascript web page where a logged in user can browse for events using a keyword search.
+A. KeyWordsearch.html
+
+Q. Write a javascript web page where a logged in user can browse for events category (e.g., conference, concert, networking) so that I can find events relevant to my interests.
+A. BrowseEvents.html
+
+Q. Write a javascript web page where a logged in user can browse for events by location so that I can find events near me, enter postcode. 
+A. FindEventsNear.html
+
+Q. Write a javascript web page where a logged in user can find events by price range (including free) so that I can find events within my budget. 
+A. FindEventsByBudget.html
+
+
+Event Registration & Ticketing:
+Q. Write a javascript web page where a user can select an event and start the registration process so that I can sign up to attend.
+A. StartReg.html
+
+Q. Write a javascript web page where a user can choose between available ticket types (e.g., General, VIP/Premium) for an event they can select the experience they prefer.
+A. TicketTypes.html
+
+Q. Write a javascript web page where a user can choose between receive a digital ticket types QR code or downloadable PDF.
+A. DownloadTypes.html
+
+
+Notifications: 
+Q. Write a javascript web page where a registered user will recieve an email notifying them about event 24 hours before the event.
+A. 24hourNotification.html
+
+Q. Write a javascript web page where a registered user will recieve an email notifications if an event they registered for is updated (e.g., time change, venue change).
+A. NotificationUpdate.html
+
+Q. Write a javascript web page where a registered user will be notified immediately if an event they registered for is cancelled so that they are aware and know the next steps.
+A. NotificationOfCancellation.html
+
+Q Write a javascript web page where a registered user will be notified of a cancelled paid event, they will receive notification about the automatic refund process so that they know my payment is being returned.
+A. NotificationCancelProcess.html
+
+
+

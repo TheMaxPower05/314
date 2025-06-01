@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wollongong Events - June 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, [User]</h2>
+    <p>Click the button below to browse events happening in Wollongong this June.</p>
+    <button onclick="showEvents()">Browse Events</button>
+    <ul id="eventList"></ul>
+  </div>
+
+  <script>
+    const events = [
+      "🎉 Wollongong's Annual Wedding Expo – Novotel Northbeach – Sun, 22 Jun",
+      "🤠 Rodeo 4 Life – WIN Entertainment Centre – Sat, 14 Jun",
+      "🎓 UOW Engineering & Nursing Ball – Fraternity Club – Fri, 6 Jun",
+      "🎤 Bed By 10 Party – The Illawarra Hotel – Sat, 7 Jun",
+      "🎭 IPAC Theatre Night – Illawarra Performing Arts Centre – Sat, 21 Jun",
+      "🎸 Make Them Suffer – University of Wollongong – Fri, 20 Jun",
+      "🎶 Choirboys: Run To Paradise – Anita’s Theatre – Sat, 31 May",
+      "🎷 James Morrison Live – Centro CBD – Fri, 27 Jun",
+      "🎉 Glow Zone Festival – Dapto Showgrounds – Sat, 7 Jun",
+      "🎭 Faulty Towers Dining Experience – Centro CBD – Fri, 6 Jun"
+    ];
+
+    function showEvents() {
+      const list = document.getElementById('eventList');
+      list.innerHTML = '';
+      events.forEach(event => {
+        const li = document.createElement('li');
+        li.textContent = event;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

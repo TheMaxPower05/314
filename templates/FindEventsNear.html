@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Events by Postcode</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Find Events Near You</h2>
+    <input type="text" id="postcodeInput" placeholder="Enter your postcode (e.g., 2500)" />
+    <button onclick="filterEvents()">Search Events</button>
+    <ul id="eventList"></ul>
+  </div>
+
+  <script>
+    const events = [
+      { title: "Wollongong Jazz Festival", postcode: "2500" },
+      { title: "Shellharbour Food Truck Fiesta", postcode: "2529" },
+      { title: "Kiama Art Walk", postcode: "2533" },
+      { title: "Dapto Rodeo Night", postcode: "2530" },
+      { title: "Thirroul Music Market", postcode: "2515" },
+      { title: "UOW Tech Conference", postcode: "2500" }
+    ];
+
+    function filterEvents() {
+      const input = document.getElementById('postcodeInput').value.trim();
+      const list = document.getElementById('eventList');
+      list.innerHTML = '';
+
+      if (!input) {
+        list.innerHTML = '<li>Please enter a postcode.</li>';
+        return;
+      }
+
+      const filtered = events.filter(event => event.postcode === input);
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<li>No events found for this postcode.</li>';
+      } else {
+        filtered.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = event.title;
+          list.appendChild(li);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

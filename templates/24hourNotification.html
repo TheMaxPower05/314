@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Reminder Registration</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background: #f4f4f4; }
+    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+    button { background-color: #007bff; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register for Event Reminder</h2>
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <select id="event">
+      <option value="2025-06-10T18:00:00">Tech Conference – June 10, 6PM</option>
+      <option value="2025-06-15T19:00:00">Jazz Night – June 15, 7PM</option>
+    </select>
+    <button onclick="registerReminder()">Register</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function registerReminder() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const eventDate = document.getElementById('event').value;
+
+      fetch('/api/register-reminder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, eventDate })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('message').textContent = data.message;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Events by Price</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #28a745;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Find Events by Price</h2>
+    <label for="minPrice">Minimum Price (AUD):</label>
+    <input type="number" id="minPrice" placeholder="0 for free" min="0" />
+    
+    <label for="maxPrice">Maximum Price (AUD):</label>
+    <input type="number" id="maxPrice" placeholder="e.g., 50" min="0" />
+    
+    <button onclick="filterEvents()">Search Events</button>
+    <ul id="eventList"></ul>
+  </div>
+
+  <script>
+    const events = [
+      { title: "Free Outdoor Movie Night", price: 0 },
+      { title: "Local Art Exhibition", price: 10 },
+      { title: "Jazz Concert", price: 25 },
+      { title: "Tech Conference", price: 50 },
+      { title: "Food & Wine Festival", price: 40 },
+      { title: "Community Yoga Class", price: 5 },
+      { title: "Startup Networking Event", price: 15 }
+    ];
+
+    function filterEvents() {
+      const min = parseFloat(document.getElementById('minPrice').value) || 0;
+      const max = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+      const list = document.getElementById('eventList');
+      list.innerHTML = '';
+
+      const filtered = events.filter(event => event.price >= min && event.price <= max);
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<li>No events found in this price range.</li>';
+      } else {
+        filtered.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = `${event.title} – $${event.price === 0 ? 'Free' : event.price}`;
+          list.appendChild(li);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

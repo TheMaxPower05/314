@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Ticket Format</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 40px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .pdf-btn {
+      background-color: #28a745;
+      color: white;
+    }
+    .qr-btn {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Choose Your Ticket Format</h2>
+    <p>Select how you'd like to receive your ticket:</p>
+    <button class="pdf-btn" onclick="window.open('ticket.pdf')">Download PDF Ticket</button>
+    <button class="qr-btn" onclick="window.open('ticket_qr.png')">View QR Code Ticket</button>
+  </div>
+</body>
+</html>

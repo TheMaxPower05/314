@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+
+</head>
+<body>
+  <div class="logo-container">
+    <img src="static/logo.jpg" alt="Logo" class="logo">
+  </div>
+  {% if error %}
+  <div id="errorPanel" class="error-panel">
+    {{ error }}
+  </div>
+  {% endif %}
+  <main>
+    <section>
+        
+      <h2 class = "login">Login</h2>
+    <form class="info" method="POST">
+      <div class="container">
+        <label class="email">Email</label>
+        <input class="eInput" type="text" name="email">
+      </div>
+
+      <div class="container">
+        <label class="password">Password</label>
+        <input class="pInput" type="password" name="password">
+      </div>
+
+      <div class="container">
+        <a href="#" class="fpassword">forgot <br> password?</a>
+        <a href="/register" class="signup">Sign <br> Up?</a>
+      </div>
+      
+      <button class="loginBtn">Login</button>
+    </form>
+
+    
+
+    </section>
+  </main>
+
+
+</body>
+</html>

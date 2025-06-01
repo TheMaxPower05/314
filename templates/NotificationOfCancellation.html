@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Cancellation Notification</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 40px; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    h2 { text-align: center; }
+    .notification {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+      padding: 15px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, John Doe</h2>
+    <p>You are registered for: <strong>Tech Conference 2025</strong></p>
+    <div class="notification" id="cancelNotice">
+      <strong>Important:</strong> This event has been <strong>cancelled</strong>. Please check your email for next steps or contact support.
+    </div>
+  </div>
+
+  <script>
+    // Simulated real-time cancellation check (e.g., via WebSocket or polling)
+    function checkEventStatus() {
+      // Simulate event cancellation
+      const eventCancelled = true;
+
+      if (eventCancelled) {
+        document.getElementById('cancelNotice').style.display = 'block';
+      }
+    }
+
+    // Simulate immediate notification
+    setTimeout(checkEventStatus, 2000); // Simulate delay
+  </script>
+</body>
+</html>
