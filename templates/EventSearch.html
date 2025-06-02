@@ -2,80 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wollongong Events - June 2025</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eef2f3;
-      padding: 40px;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-    }
-    button {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      background: #f9f9f9;
-      margin: 10px 0;
-      padding: 15px;
-      border-left: 5px solid #007bff;
-    }
-  </style>
+  <title>Search Results | EventHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="container">
-    <h2>Welcome, [User]</h2>
-    <p>Click the button below to browse events happening in Wollongong this June.</p>
-    <button onclick="showEvents()">Browse Events</button>
-    <ul id="eventList"></ul>
-  </div>
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="header-actions">
+      <form class="search-bar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends..." value="{{ request.args.get('q', '') }}">
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/icon.png') }}" class="icon"></a>
+      </div>
+    </div>
+  </header>
 
-  <script>
-    const events = [
-      "🎉 Wollongong's Annual Wedding Expo – Novotel Northbeach – Sun, 22 Jun",
-      "🤠 Rodeo 4 Life – WIN Entertainment Centre – Sat, 14 Jun",
-      "🎓 UOW Engineering & Nursing Ball – Fraternity Club – Fri, 6 Jun",
-      "🎤 Bed By 10 Party – The Illawarra Hotel – Sat, 7 Jun",
-      "🎭 IPAC Theatre Night – Illawarra Performing Arts Centre – Sat, 21 Jun",
-      "🎸 Make Them Suffer – University of Wollongong – Fri, 20 Jun",
-      "🎶 Choirboys: Run To Paradise – Anita’s Theatre – Sat, 31 May",
-      "🎷 James Morrison Live – Centro CBD – Fri, 27 Jun",
-      "🎉 Glow Zone Festival – Dapto Showgrounds – Sat, 7 Jun",
-      "🎭 Faulty Towers Dining Experience – Centro CBD – Fri, 6 Jun"
-    ];
+  <main>
+    <h2>Search Results for "{{ request.args.get('q', '') }}"</h2>
 
-    function showEvents() {
-      const list = document.getElementById('eventList');
-      list.innerHTML = '';
-      events.forEach(event => {
-        const li = document.createElement('li');
-        li.textContent = event;
-        list.appendChild(li);
-      });
-    }
-  </script>
+    <section class="upcoming-events">
+      <h3>Matching Events</h3>
+      <div class="event-list">
+        {% if events %}
+          {% for event in events %}
+          <div class="event-card">
+            <img src="{{ url_for('static', filename=event.image) }}" alt="{{ event.title }}">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.datetime[:10] }} · {{ event.datetime[11:16] }}</p>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>No matching events found.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="friend-list">
+      <h3>Matching Users</h3>
+      <div class="friends-container">
+        {% if friends %}
+          {% for friend in friends %}
+          <div class="friend">
+            <img src="{{ url_for('static', filename=friend.image) }}" alt="{{ friend.name }}" class="{% if 'default_profile.jpg' in friend.image %}defaultProfile{% endif %}">
+            <p>{{ friend.name }}</p>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>No matching friends found.</p>
+        {% endif %}
+      </div>
+    </section>
+  </main>
 </body>
 </html>

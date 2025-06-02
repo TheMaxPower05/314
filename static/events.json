@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Summer Festival",
+    "datetime": "2025-06-10T18:00:00",
+    "image": "images/sample1.jpg",
+    "organiser": "kpham2004@hotmail.com"
+  },
+  {
+    "id": 2,
+    "title": "Jazz Night",
+    "datetime": "2025-06-15T19:00:00",
+    "image": "images/sample2.jpg",
+    "organiser": "kpham2004@hotmail.com"
+  },
+  {
+    "id": 3,
+    "title": "Existentialism Society",
+    "datetime": "2025-07-24T13:00:00",
+    "image": "images/sample3.jpg",
+    "organiser": "s"
+  },
+  {
+    "id": 4,
+    "title": "Tech Talks 2025",
+    "datetime": "2025-06-20T17:00:00",
+    "image": "",
+    "organiser": "alice@example.com"
+  },
+  {
+    "id": 5,
+    "title": "Open Mic Night",
+    "datetime": "2025-06-22T20:00:00",
+    "image": "",
+    "organiser": "bob@example.com"
+  },
+  {
+    "id": 6,
+    "title": "Startup Pitch Day",
+    "datetime": "2025-07-01T14:00:00",
+    "image": "",
+    "organiser": "clara@example.com"
+  },
+  {
+    "id": 7,
+    "title": "Coding Bootcamp",
+    "datetime": "2025-07-05T10:00:00",
+    "image": "",
+    "organiser": "dave@example.com"
+  },
+  {
+    "id": 8,
+    "title": "Art & Wine Evening",
+    "datetime": "2025-07-07T18:30:00",
+    "image": "",
+    "organiser": "emma@example.com"
+  },
+  {
+    "id": 9,
+    "title": "AI & Ethics Panel",
+    "datetime": "2025-07-12T15:00:00",
+    "image": "",
+    "organiser": "frank@example.com"
+  },
+  {
+    "id": 10,
+    "title": "Beach Cleanup Day",
+    "datetime": "2025-07-15T08:00:00",
+    "image": "",
+    "organiser": "grace@example.com"
+  },
+  {
+    "id": 11,
+    "title": "Board Game Marathon",
+    "datetime": "2025-07-18T16:00:00",
+    "image": "",
+    "organiser": "harry@example.com"
+  },
+  {
+    "id": 12,
+    "title": "Photography Workshop",
+    "datetime": "2025-07-20T11:00:00",
+    "image": "",
+    "organiser": "ivy@example.com"
+  },
+  {
+    "id": 13,
+    "title": "Green Living Expo",
+    "datetime": "2025-07-22T09:00:00",
+    "image": "",
+    "organiser": "jack@example.com"
+  },
+  {
+    "id": 14,
+    "title": "Local History Walk",
+    "datetime": "2025-07-25T10:30:00",
+    "image": "",
+    "organiser": "kate@example.com"
+  },
+  {
+    "id": 15,
+    "title": "Sustainability Forum",
+    "datetime": "2025-07-27T14:30:00",
+    "image": "",
+    "organiser": "leo@example.com"
+  }
+]

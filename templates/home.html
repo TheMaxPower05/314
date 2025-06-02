@@ -2,35 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Home | EventHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Management System</title>
-  <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <div class="logo-container">
-    <img src="logo.jpg" alt="Logo" class="logo">
-  </div>
-  <div class="auth-container">
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="header-actions">
+      <form class="search-bar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/icon.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <section>
-        
-      <h2 class = "auth">Home Page</h2>
-        <form class="auth-form">
-        <div class="input-group">
-            <input type="text" maxlength="1" class="auth-input" />
-            <input type="text" maxlength="1" class="auth-input" />
-            <input type="text" maxlength="1" class="auth-input" />
-            <input type="text" maxlength="1" class="auth-input" />
-            <input type="text" maxlength="1" class="auth-input" />
-            <input type="text" maxlength="1" class="auth-input" />
-        </div>
-        <button type="submit" class="submit-btn">Verify</button>
-        </form>
+    <section class="slideshow">
+      <div class="slides">
+        {% for event in events %}
+        <img src="{{ url_for('static', filename=event.image) }}" alt="{{ event.title }}">
+        {% endfor %}
+      </div>
+    </section>
 
+    {% if role == 'organiser' %}
+      <a href="/create_event" class="createEventBtn">Create New Event</a>
+    {% endif %}
+
+    <section class="upcoming-events">
+      {% if role == 'organiser' %}
+        <a href="{{ url_for('search') }}"><h2>Your Events   ></h2></a>
+
+      {% else %}
+        <a href="{{ url_for('search') }}"><h2>Upcoming Events  ></h2></a>
+
+      {% endif %}
+        
+      <div class="event-list">
+        {% for event in events[:6] %}
+        <div class="event-card">
+          <img src="{{ url_for('static', filename=event.image) }}" alt="{{ event.title }}">
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.datetime[:10] }} · {{ event.datetime[11:16] }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+
+    <section class="friend-list">
+      <h2>Friends Attending</h2>
+      <div class="friends-container">
+        {% for friend in friends %}
+        <div class="friend">
+          <img src="{{ url_for('static', filename=friend.image) }}" alt="{{ friend.name }}" class="{% if 'default_profile.jpg' in friend.image %}defaultProfile{% endif %}">
+          <p>{{ friend.name }}</p>
+        </div>
+        {% endfor %}
+      </div>
     </section>
   </main>
-    </div>
-
 </body>
 </html>
