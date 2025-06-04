@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <script>
+        let confirmCallback = null;
+
+        function showModal(message, onConfirm) {
+            document.getElementById('confirmMessage').innerText = message;
+            confirmCallback = onConfirm;
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function confirmCancel(title, index) {
+            showModal(`Cancel attendance for "${title}"?`, () => {
+                fetch(`/cancelAttendance/${index}`, { method: 'POST' })
+                    .then(() => window.location.reload());
+            });
+        }
+
+        function confirmDeleteEvent(title, eventId) {
+            showModal(`Cancel your event "${title}"?`, () => {
+                fetch(`/deleteEvent/${eventId}`, { method: 'POST' })
+                    .then(() => window.location.reload());
+            });
+        }
+
+        window.onload = function () {
+            document.getElementById('confirmYes').onclick = function () {
+                if (confirmCallback) confirmCallback();
+                document.getElementById('confirmModal').style.display = 'none';
+            };
+
+            document.getElementById('confirmNo').onclick = function () {
+                document.getElementById('confirmModal').style.display = 'none';
+            };
+        };
+
+        function openEditModal() {
+        document.getElementById("editModal").style.display = "flex";
+        }
+
+        function closeEditModal() {
+        document.getElementById("editModal").style.display = "none";
+        }
+
+        // Optional: Close on background click
+        window.onclick = function(event) {
+        let modal = document.getElementById("editModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
+
+
+
+</head>
+<body>
+
+    <header>
+        <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+        <div class="headerActions">
+        <form class="searchBar" method="GET" action="{{ url_for('search') }}">
+            <input type="text" name="q" placeholder="Search events or friends...">
+            <button type="submit">Search</button>
+        </form>
+        <div class="icons">
+            <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
+        </div>
+        </div>
+    </header>
+
+    <div class="profileCard">
+        <img src="{{ url_for('static', filename=profile_pic) }}" alt="Profile Picture"><br>
+        <button class="editBtn" onclick="openEditModal()">Edit Profile</button>
+        <div class="modal" id="editModal">
+            <div class="modalContent">
+                <h3>Edit Profile</h3>
+                <form id="editProfileForm" action="/editProfile" method="POST" enctype="multipart/form-data">
+                <input type="text" name="first_name" placeholder="New First Name"><br><br>
+                <input type="text" name="last_name" placeholder="New Last Name"><br><br>
+                <input type="email" name="email" placeholder="New Email"><br><br>
+                <input type="file" name="profilePic"><br><br>
+                <button type="submit" class="confirmBtn">Save Changes</button>
+                <button type="button" onclick="closeEditModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p class="email">{{ user.email }}</p>
+
+        
+
+       <div class="profileSection">
+            <h3>Friends</h3>
+            {% if friendProfiles %}
+                {% for friend in friendProfiles %}
+                    <div class="friendCard">
+                        <img src="{{ url_for('static', filename=friend.profilePic) }}" alt="{{ friend.name }}" class="friendPic">
+                        <h4>{{ friend.name }}</h4>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No friends added.</p>
+            {% endif %}
+        </div>
+
+        <div class="profileSection">
+        <h3>Attending Events</h3>
+        {% if attendingEvents %}
+            <ul>
+                {% for event in attendingEvents %}
+                    <li>
+                        {{ event.title }} (x{{ event.ticketCount }})
+                        <button onclick="confirmCancel('{{ event.title }}', '{{ loop.index0 }}')" class="cancelBtn">Cancel</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Not attending any events.</p>
+        {% endif %}
+        </div>
+
+        {% if user.role == "organiser" %}
+        <div class="profileSection">
+            <h3>Organised Events</h3>
+            {% if organisedEvents %}
+                <ul>
+                    {% for event in organisedEvents %}
+                        <li>
+                            <a href="{{ url_for('tickets', eventId=event.id) }}" class="events">{{ event.title }}</a>
+                            <button onclick="confirmDeleteEvent('{{ event.title }}', '{{ event.id }}')" class="cancelBtn">Cancel</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven't organised any events.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div id="confirmModal" class="modal">
+            <div class="modalContent">
+                <p id="confirmMessage"></p>
+                <button id="confirmYes">Yes</button>
+                <button id="confirmNo">No</button>
+            </div>
+        </div>
+
+        <a class="backLink" href="{{ url_for('dashboard') }}">Home</a>
+    </div>
+</body>
+</html>

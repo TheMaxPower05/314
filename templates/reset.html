@@ -6,6 +6,13 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
 </head>
 <body>
+
+  {% if error %}
+  <div id="errorPanel" class="error-panel">
+    {{ error }}
+  </div>
+  {% endif %}
+
   <div class="reset-container">
     <h2>Reset Password</h2>
     {% with messages = get_flashed_messages(with_categories=true) %}

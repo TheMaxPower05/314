@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmed</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='confirm.css') }}">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="headerActions">
+      <form class="searchBar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="confirmationContainer">
+    <h1>Thank You, {{ name }}!</h1>
+    <p>Your booking for <strong>{{ event.title }}</strong> is confirmed.</p>
+    <p><strong>Date:</strong> {{ event.datetime[:10] }}</p>
+    <p><strong>Time:</strong> {{ event.datetime[11:16] }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Tickets Reserved:</strong> {{ quantity }}</p>
+    <p>A confirmation email has been sent!</p>
+    <a href="{{ url_for('dashboard') }}">Home</a>
+  </div>
+</body>
+</html>

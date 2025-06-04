@@ -22,17 +22,17 @@ header h1 {
   margin: 0;
 }
 
-.search-bar {
+.searchBar {
   display: flex;
 }
 
-.search-bar input {
+.searchBar input {
   padding: 8px;
   border: none;
   border-radius: 4px 0 0 4px;
 }
 
-.search-bar button {
+.searchBar button {
   padding: 8px 12px;
   background-color: #0056b3;
   border: none;
@@ -77,7 +77,7 @@ main a{
   border-radius: 20px; 
 }
 
-.header-actions {
+.headerActions {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -106,19 +106,19 @@ main a{
   100% { transform: translateX(0%); }
 }
 
-.upcoming-events {
+.upcomingEvents {
   margin-top: 50px;;
   margin-bottom: 50px;
 }
 
-.event-list {
+.eventList {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.event-card {
+.eventCard {
   background: white;
   border-radius: 8px;
   padding: 10px;
@@ -126,16 +126,16 @@ main a{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.event-card img {
+.eventCard img {
   width: 100%;
   border-radius: 4px;
 }
 
-.friend-list {
+.friendList {
   margin-top: 40px;
 }
 
-.friends-container {
+.friendsContainer {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -154,6 +154,16 @@ main a{
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.profile {
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
 .friend p {
   margin-top: 8px;
   font-weight: bold;
@@ -170,6 +180,25 @@ main a{
   font-weight: 550;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ticketBtn {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 550;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.ticketBtn:hover {
+  background-color: #0056b3;
 }
 
 .createEventBtn:hover {

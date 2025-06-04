@@ -1,57 +1,79 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  margin: 0;
+  background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
 .reset-container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 350px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  text-align: center;
 }
 
 h2 {
-  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
 }
 
 input[type="password"] {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
+button[type="submit"] {
+  background-color: #007bff;
   color: white;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
 }
 
-button:hover {
-  background-color: #218838;
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.error-panel {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 400px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .message {
-  text-align: center;
-  font-size: 0.9em;
-  margin-top: 10px;
-}
-
-.message.error {
-  color: red;
+  margin-top: 15px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 .message.success {
-  color: green;
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
 }

@@ -1,210 +1,275 @@
 {
-  "kpham2004@hotmail.com": {
-    "first_name": "Kai",
-    "last_name": "Pham",
-    "password": "BananaPham",
-    "role": "organiser",
-    "friends": ["s"],
-    "profile_pic": "images/friend2.avif"
-  },
-  "s": {
-    "first_name": "f",
-    "last_name": "f",
-    "password": "d",
-    "role": "attendee",
-    "friends": ["kpham2004@hotmail.com"],
-    "profile_pic": ""
-  },
-  "kpham@hotmail.com": {
-    "first_name": "Kai",
-    "last_name": "Pham",
-    "password": "g",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "alice@example.com": {
-    "first_name": "Alice",
-    "last_name": "Morgan",
-    "password": "pass123",
-    "role": "organiser",
-    "friends": ["bob@example.com", "clara@example.com"],
-    "profile_pic": ""
-  },
-  "bob@example.com": {
-    "first_name": "Bob",
-    "last_name": "Smith",
-    "password": "pass456",
-    "role": "attendee",
-    "friends": ["alice@example.com"],
-    "profile_pic": ""
-  },
-  "clara@example.com": {
-    "first_name": "Clara",
-    "last_name": "Jones",
-    "password": "abc123",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "dave@example.com": {
-    "first_name": "Dave",
-    "last_name": "Wilson",
-    "password": "pwd001",
-    "role": "attendee",
-    "friends": ["emma@example.com"],
-    "profile_pic": ""
-  },
-  "emma@example.com": {
-    "first_name": "Emma",
-    "last_name": "Brown",
-    "password": "pwd002",
-    "role": "organiser",
-    "friends": ["dave@example.com"],
-    "profile_pic": ""
-  },
-  "frank@example.com": {
-    "first_name": "Frank",
-    "last_name": "Taylor",
-    "password": "pwd003",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "grace@example.com": {
-    "first_name": "Grace",
-    "last_name": "Davis",
-    "password": "pwd004",
-    "role": "organiser",
-    "friends": ["harry@example.com"],
-    "profile_pic": ""
-  },
-  "harry@example.com": {
-    "first_name": "Harry",
-    "last_name": "Thomas",
-    "password": "pwd005",
-    "role": "attendee",
-    "friends": ["grace@example.com"],
-    "profile_pic": ""
-  },
-  "ivy@example.com": {
-    "first_name": "Ivy",
-    "last_name": "Moore",
-    "password": "pwd006",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "jack@example.com": {
-    "first_name": "Jack",
-    "last_name": "Taylor",
-    "password": "pwd007",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "kate@example.com": {
-    "first_name": "Kate",
-    "last_name": "Anderson",
-    "password": "pwd008",
-    "role": "organiser",
-    "friends": ["leo@example.com"],
-    "profile_pic": ""
-  },
-  "leo@example.com": {
-    "first_name": "Leo",
-    "last_name": "White",
-    "password": "pwd009",
-    "role": "attendee",
-    "friends": ["kate@example.com"],
-    "profile_pic": ""
-  },
-  "mia@example.com": {
-    "first_name": "Mia",
-    "last_name": "Hall",
-    "password": "pwd010",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "nate@example.com": {
-    "first_name": "Nate",
-    "last_name": "Lee",
-    "password": "pwd011",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "olivia@example.com": {
-    "first_name": "Olivia",
-    "last_name": "Young",
-    "password": "pwd012",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "peter@example.com": {
-    "first_name": "Peter",
-    "last_name": "King",
-    "password": "pwd013",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "quinn@example.com": {
-    "first_name": "Quinn",
-    "last_name": "Scott",
-    "password": "pwd014",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "ruby@example.com": {
-    "first_name": "Ruby",
-    "last_name": "Green",
-    "password": "pwd015",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "sam@example.com": {
-    "first_name": "Sam",
-    "last_name": "Baker",
-    "password": "pwd016",
-    "role": "organiser",
-    "friends": ["tina@example.com", "victor@example.com"],
-    "profile_pic": ""
-  },
-  "tina@example.com": {
-    "first_name": "Tina",
-    "last_name": "Nelson",
-    "password": "pwd017",
-    "role": "attendee",
-    "friends": ["sam@example.com"],
-    "profile_pic": ""
-  },
-  "victor@example.com": {
-    "first_name": "Victor",
-    "last_name": "Reed",
-    "password": "pwd018",
-    "role": "organiser",
-    "friends": ["sam@example.com"],
-    "profile_pic": ""
-  },
-  "will@example.com": {
-    "first_name": "Will",
-    "last_name": "Campbell",
-    "password": "pwd019",
-    "role": "attendee",
-    "friends": [],
-    "profile_pic": ""
-  },
-  "zoe@example.com": {
-    "first_name": "Zoe",
-    "last_name": "Wright",
-    "password": "pwd020",
-    "role": "organiser",
-    "friends": [],
-    "profile_pic": ""
-  }
+    "s": {
+        "first_name": "f",
+        "last_name": "f",
+        "password": "d",
+        "role": "attendee",
+        "friends": [
+            "kpham2004@hotmail.com"
+        ],
+        "profile_pic": ""
+    },
+    "kpham@hotmail.com": {
+        "first_name": "Kai",
+        "last_name": "Pham",
+        "password": "g",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "alice@example.com": {
+        "first_name": "Alice",
+        "last_name": "Morgan",
+        "password": "pass123",
+        "role": "organiser",
+        "friends": [
+            "bob@example.com",
+            "clara@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "bob@example.com": {
+        "first_name": "Bob",
+        "last_name": "Smith",
+        "password": "pass456",
+        "role": "attendee",
+        "friends": [
+            "alice@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "clara@example.com": {
+        "first_name": "Clara",
+        "last_name": "Jones",
+        "password": "abc123",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "dave@example.com": {
+        "first_name": "Dave",
+        "last_name": "Wilson",
+        "password": "pwd001",
+        "role": "attendee",
+        "friends": [
+            "emma@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "emma@example.com": {
+        "first_name": "Emma",
+        "last_name": "Brown",
+        "password": "pwd002",
+        "role": "organiser",
+        "friends": [
+            "dave@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "frank@example.com": {
+        "first_name": "Frank",
+        "last_name": "Taylor",
+        "password": "pwd003",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "grace@example.com": {
+        "first_name": "Grace",
+        "last_name": "Davis",
+        "password": "pwd004",
+        "role": "organiser",
+        "friends": [
+            "harry@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "harry@example.com": {
+        "first_name": "Harry",
+        "last_name": "Thomas",
+        "password": "pwd005",
+        "role": "attendee",
+        "friends": [
+            "grace@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "ivy@example.com": {
+        "first_name": "Ivy",
+        "last_name": "Moore",
+        "password": "pwd006",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "jack@example.com": {
+        "first_name": "Jack",
+        "last_name": "Taylor",
+        "password": "pwd007",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "kate@example.com": {
+        "first_name": "Kate",
+        "last_name": "Anderson",
+        "password": "pwd008",
+        "role": "organiser",
+        "friends": [
+            "leo@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "leo@example.com": {
+        "first_name": "Leo",
+        "last_name": "White",
+        "password": "pwd009",
+        "role": "attendee",
+        "friends": [
+            "kate@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "mia@example.com": {
+        "first_name": "Mia",
+        "last_name": "Hall",
+        "password": "pwd010",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "nate@example.com": {
+        "first_name": "Nate",
+        "last_name": "Lee",
+        "password": "pwd011",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "olivia@example.com": {
+        "first_name": "Olivia",
+        "last_name": "Young",
+        "password": "pwd012",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "peter@example.com": {
+        "first_name": "Peter",
+        "last_name": "King",
+        "password": "pwd013",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "quinn@example.com": {
+        "first_name": "Quinn",
+        "last_name": "Scott",
+        "password": "pwd014",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "ruby@example.com": {
+        "first_name": "Ruby",
+        "last_name": "Green",
+        "password": "pwd015",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "sam@example.com": {
+        "first_name": "Sam",
+        "last_name": "Baker",
+        "password": "pwd016",
+        "role": "organiser",
+        "friends": [
+            "tina@example.com",
+            "victor@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "tina@example.com": {
+        "first_name": "Tina",
+        "last_name": "Nelson",
+        "password": "pwd017",
+        "role": "attendee",
+        "friends": [
+            "sam@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "victor@example.com": {
+        "first_name": "Victor",
+        "last_name": "Reed",
+        "password": "pwd018",
+        "role": "organiser",
+        "friends": [
+            "sam@example.com"
+        ],
+        "profile_pic": ""
+    },
+    "will@example.com": {
+        "first_name": "Will",
+        "last_name": "Campbell",
+        "password": "pwd019",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "zoe@example.com": {
+        "first_name": "Zoe",
+        "last_name": "Wright",
+        "password": "pwd020",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": ""
+    },
+    "test@test.com": {
+        "first_name": "coep",
+        "last_name": "dude",
+        "password": "test",
+        "role": "attendee",
+        "friends": [],
+        "profile_pic": "images/Screenshot_2025-03-19_234223.png",
+        "attendingEvents": [
+            {
+                "eventId": "1",
+                "eventName": "Summer Festival",
+                "ticketCount": 5
+            }
+        ]
+    },
+    "kpham2004@hotmail.com": {
+        "first_name": "Kai",
+        "last_name": "dope",
+        "password": "dude",
+        "role": "organiser",
+        "friends": [
+            "s"
+        ],
+        "profile_pic": "images/friend4.jpg",
+        "attendingEvents": [
+            {
+                "eventId": "1",
+                "eventName": "Summer Festival",
+                "ticketCount": 5
+            }
+        ]
+    },
+    "gupe@gupe.com": {
+        "first_name": "Ben",
+        "last_name": "Benjimin",
+        "password": "Dope",
+        "role": "organiser",
+        "friends": [],
+        "profile_pic": "",
+        "attendingEvents": [
+            {
+                "eventId": "21",
+                "eventName": "Baking",
+                "ticketCount": 3
+            }
+        ]
+    }
 }

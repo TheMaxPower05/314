@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Event | EventHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="headerActions">
+      <form class="searchBar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
+      </div>
+    </div>
+  </header>
+
+  {% if error %}
+    <div id="errorPanel" class="error-panel">
+      {{ error }}
+    </div>
+  {% endif %}
+
+  <main>
+    <div class="createEventContainer">
+      <h1>Create New Event</h1>
+      <form method="POST" enctype="multipart/form-data">  <label for="title">Event Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="date">Event Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Event Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="image">Event Image (optional):</label>
+        <input type="file" id="image" name="image" accept="image/*">
+
+        <label for="city">City/Town:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="price">Ticket Price ($):</label>
+        <input type="number" id="price" name="price" min="0" step="0.01" required>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+
+        <button type="submit">Create Event</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

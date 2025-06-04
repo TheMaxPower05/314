@@ -2,106 +2,201 @@
   {
     "id": 1,
     "title": "Summer Festival",
+    "description": "A vibrant celebration featuring music, food, and fun summer activities for all ages.",
     "datetime": "2025-06-10T18:00:00",
     "image": "images/sample1.jpg",
-    "organiser": "kpham2004@hotmail.com"
+    "organiser": "kpham2004@hotmail.com",
+    "location": "Sydney, NSW",
+    "price": "15.00"
   },
   {
     "id": 2,
     "title": "Jazz Night",
+    "description": "An elegant evening of smooth jazz performances by talented local musicians.",
     "datetime": "2025-06-15T19:00:00",
     "image": "images/sample2.jpg",
-    "organiser": "kpham2004@hotmail.com"
+    "organiser": "kpham2004@hotmail.com",
+    "location": "Newcastle, NSW",
+    "price": "25.00"
   },
   {
     "id": 3,
     "title": "Existentialism Society",
+    "description": "A philosophical gathering discussing existential ideas and thinkers over coffee.",
     "datetime": "2025-07-24T13:00:00",
     "image": "images/sample3.jpg",
-    "organiser": "s"
+    "organiser": "s",
+    "location": "Canberra, ACT",
+    "price": "5.00"
   },
   {
     "id": 4,
     "title": "Tech Talks 2025",
+    "description": "A forum for tech enthusiasts and professionals to discuss the future of innovation.",
     "datetime": "2025-06-20T17:00:00",
     "image": "",
-    "organiser": "alice@example.com"
+    "organiser": "alice@example.com",
+    "location": "Melbourne, VIC",
+    "price": "30.00"
   },
   {
     "id": 5,
     "title": "Open Mic Night",
+    "description": "An open stage for local performers, comedians, poets, and musicians to shine.",
     "datetime": "2025-06-22T20:00:00",
     "image": "",
-    "organiser": "bob@example.com"
+    "organiser": "bob@example.com",
+    "location": "Brisbane, QLD",
+    "price": "10.00"
   },
   {
     "id": 6,
     "title": "Startup Pitch Day",
+    "description": "Watch aspiring entrepreneurs pitch their startups to potential investors and mentors.",
     "datetime": "2025-07-01T14:00:00",
     "image": "",
-    "organiser": "clara@example.com"
+    "organiser": "clara@example.com",
+    "location": "Adelaide, SA",
+    "price": "0.00"
   },
   {
     "id": 7,
     "title": "Coding Bootcamp",
+    "description": "A hands-on workshop teaching coding fundamentals and real-world application development.",
     "datetime": "2025-07-05T10:00:00",
     "image": "",
-    "organiser": "dave@example.com"
+    "organiser": "dave@example.com",
+    "location": "Perth, WA",
+    "price": "45.00"
   },
   {
     "id": 8,
     "title": "Art & Wine Evening",
+    "description": "Enjoy a relaxing evening of painting while sipping on fine wine with fellow creatives.",
     "datetime": "2025-07-07T18:30:00",
     "image": "",
-    "organiser": "emma@example.com"
+    "organiser": "emma@example.com",
+    "location": "Hobart, TAS",
+    "price": "20.00"
   },
   {
     "id": 9,
     "title": "AI & Ethics Panel",
+    "description": "Experts discuss the ethical implications and challenges of artificial intelligence.",
     "datetime": "2025-07-12T15:00:00",
     "image": "",
-    "organiser": "frank@example.com"
+    "organiser": "frank@example.com",
+    "location": "Darwin, NT",
+    "price": "25.00"
   },
   {
     "id": 10,
     "title": "Beach Cleanup Day",
+    "description": "Join volunteers in keeping the coast clean and protecting marine life.",
     "datetime": "2025-07-15T08:00:00",
     "image": "",
-    "organiser": "grace@example.com"
+    "organiser": "grace@example.com",
+    "location": "Byron Bay, NSW",
+    "price": "0.00"
   },
   {
     "id": 11,
     "title": "Board Game Marathon",
+    "description": "A full day of tabletop fun with classic and modern board games for everyone.",
     "datetime": "2025-07-18T16:00:00",
     "image": "",
-    "organiser": "harry@example.com"
+    "organiser": "harry@example.com",
+    "location": "Geelong, VIC",
+    "price": "10.00"
   },
   {
     "id": 12,
     "title": "Photography Workshop",
+    "description": "A beginner-friendly session to enhance your photography skills and creativity.",
     "datetime": "2025-07-20T11:00:00",
     "image": "",
-    "organiser": "ivy@example.com"
+    "organiser": "ivy@example.com",
+    "location": "Wollongong, NSW",
+    "price": "35.00"
   },
   {
     "id": 13,
     "title": "Green Living Expo",
+    "description": "Explore sustainable living practices, eco-products, and green technologies.",
     "datetime": "2025-07-22T09:00:00",
     "image": "",
-    "organiser": "jack@example.com"
+    "organiser": "jack@example.com",
+    "location": "Launceston, TAS",
+    "price": "12.00"
   },
   {
     "id": 14,
     "title": "Local History Walk",
+    "description": "A guided tour uncovering hidden stories and landmarks of your local area.",
     "datetime": "2025-07-25T10:30:00",
     "image": "",
-    "organiser": "kate@example.com"
+    "organiser": "kate@example.com",
+    "location": "Townsville, QLD",
+    "price": "8.00"
   },
   {
     "id": 15,
     "title": "Sustainability Forum",
+    "description": "Engage in insightful discussions on climate change and environmental solutions.",
     "datetime": "2025-07-27T14:30:00",
     "image": "",
-    "organiser": "leo@example.com"
+    "organiser": "leo@example.com",
+    "location": "Ballarat, VIC",
+    "price": "18.00"
+  },
+  {
+    "id": 17,
+    "title": "d",
+    "description": "An experimental event where anything can happen\u00e2\u20ac\u201dexpect the unexpected.",
+    "datetime": "1111-11-11T11:11",
+    "image": "",
+    "organiser": "kpham2004@hotmail.com",
+    "location": "111111, 1111",
+    "price": 111.0
+  },
+  {
+    "id": 18,
+    "title": "sdf",
+    "description": "A low-key gathering with open discussion, light snacks, and friendly company.",
+    "datetime": "1233-03-12T12:31",
+    "image": "",
+    "organiser": "kpham2004@hotmail.com",
+    "location": "rrr, rrr",
+    "price": 1111.0
+  },
+  {
+    "id": 19,
+    "title": "rtrt",
+    "description": "A quirky indie show with unique performances and creative vibes.",
+    "datetime": "0023-04-23T14:34",
+    "image": "",
+    "organiser": "kpham2004@hotmail.com",
+    "location": "erterter, erte",
+    "price": 123123.0
+  },
+  {
+    "id": 20,
+    "title": "erer",
+    "description": "An avant-garde evening of abstract art, sounds, and expression.",
+    "datetime": "0324-04-23T14:34",
+    "image": "",
+    "organiser": "kpham2004@hotmail.com",
+    "location": "werw, wer",
+    "price": 234234.0
+  },
+  {
+    "id": 21,
+    "title": "Baking",
+    "description": "Real dope food",
+    "datetime": "2026-02-12T12:00",
+    "image": "images/Screenshot_2025-03-19_234223.png",
+    "organiser": "gupe@gupe.com",
+    "location": "Perth, WA",
+    "price": 30.0
   }
 ]

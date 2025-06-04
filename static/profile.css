@@ -1,0 +1,286 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.searchBar {
+  display: flex;
+}
+
+.searchBar input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.searchBar button {
+  padding: 8px 12px;
+  background-color: #0056b3;
+  border: none;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.icons img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s;
+
+}
+
+.icons img:hover {
+  transform: scale(1.1);
+}
+
+.icons a {
+  margin-left: 10px;
+}
+
+.profile {
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f9f9f9;
+  color: black
+
+}
+
+.profileCard {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-left: 35%;
+
+  margin-top: 15px;
+}
+
+.profileCard img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.profileCard h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profileCard p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.profileCard .sectionTitle {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #007bff;
+  text-align: left;
+}
+
+.profileCard ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.profileCard ul li {
+  background: #f1f1f1;
+  margin-bottom: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+}
+
+.friendCard {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+
+}
+
+.friendCard h4{
+  margin-top: 4px;
+  margin-bottom: -2px;
+}
+
+.friendPic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.backLink {
+  display: center;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 550;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.events{
+
+  text-decoration: none;
+  color: black
+
+}
+
+
+
+.cancelBtn {
+  padding: 6px 10px;
+  background-color: #dc354682;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto; 
+}
+
+.cancelBtn:hover {
+  background-color: #c82333;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  min-width: 300px;
+}
+
+.modalContent button {
+  margin: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#confirmYes {
+  background-color: #dc3545;
+  color: white;
+}
+
+#confirmNo {
+  background-color: #6c757d;
+  color: white;
+}
+
+
+.backLink:hover {
+  background-color: #0056b3;
+}
+
+
+.editBtn {
+  margin-top: -20px;  
+  margin-left: 12px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: #0056b3;
+}
+
+.modalContent input[type="email"],
+.modalContent input[type="file"] {
+  width: 90%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.saveBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.confirmBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

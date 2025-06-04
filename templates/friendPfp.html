@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ profile.first_name }}'s Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="headerActions">
+      <form class="searchBar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends..." />
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon"></a>
+        <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile"></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="profileCard">
+    <img src="{{ url_for('static', filename=profile.profile_pic or 'images/default_profile.jpg') }}" alt="Profile Picture">
+    <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
+    <p class="email">{{ profile_email }}</p>
+
+    {% if not is_friend %}
+    <form method="POST" action="{{ url_for('addFriend', email=profile_email) }}">
+      <button type="submit" class="confirmBtn">Add Friend</button>
+    </form>
+    {% else %}
+    <p>You're already friends!</p>
+    {% endif %}
+
+    <a class="backLink" href="{{ url_for('dashboard') }}">Home</a>
+  </div>
+</body>
+</html>

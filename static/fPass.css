@@ -1,65 +1,93 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .form-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 350px;
-    text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
 }
 
 input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ffc107;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
 }
 
-button:hover {
-    background-color: #e0a800;
-}
-
-.messages {
-    list-style: none;
-    padding: 0;
-}
-
-.success {
-    color: green;
-}
-
-.error {
-    color: red;
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
 }
 
 .back-link {
-    display: block;
-    margin-top: 15px;
-    color: #007bff;
-    text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
 }
 
 .back-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px 0;
+}
+
+.messages li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.messages .error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.messages .success {
+  background-color: #d4edda;
+  color: #155724;
 }

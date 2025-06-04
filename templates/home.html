@@ -9,15 +9,15 @@
 <body>
   <header>
     <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
-    <div class="header-actions">
-      <form class="search-bar" method="GET" action="{{ url_for('search') }}">
+    <div class="headerActions">
+      <form class="searchBar" method="GET" action="{{ url_for('search') }}">
         <input type="text" name="q" placeholder="Search events or friends...">
         <button type="submit">Search</button>
       </form>
       <div class="icons">
-        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
-        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
-        <a href="#"><img src="{{ url_for('static', filename='images/icon.png') }}" class="icon" onmouseover="this.style.filter='invert(1)'" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
       </div>
     </div>
   </header>
@@ -32,10 +32,10 @@
     </section>
 
     {% if role == 'organiser' %}
-      <a href="/create_event" class="createEventBtn">Create New Event</a>
+      <a href="/createEvent" class="createEventBtn">Create New Event</a>
     {% endif %}
 
-    <section class="upcoming-events">
+    <section class="upcomingEvents">
       {% if role == 'organiser' %}
         <a href="{{ url_for('search') }}"><h2>Your Events   ></h2></a>
 
@@ -44,21 +44,23 @@
 
       {% endif %}
         
-      <div class="event-list">
+      <div class="eventList">
         {% for event in events[:6] %}
-        <div class="event-card">
+        <div class="eventCard">
           <img src="{{ url_for('static', filename=event.image) }}" alt="{{ event.title }}">
           <h3>{{ event.title }}</h3>
           <p>{{ event.datetime[:10] }} · {{ event.datetime[11:16] }}</p>
-        </div>
+          <p>{{event.location}}</p>
+          <p>${{event.price}}</p>
+          <a href="{{ url_for('tickets', eventId=event.id) }}" class="ticketBtn">Get Tickets</a>        </div>
         {% endfor %}
       </div>
     </section>
 
 
-    <section class="friend-list">
+    <section class="friendList">
       <h2>Friends Attending</h2>
-      <div class="friends-container">
+      <div class="friendsContainer">
         {% for friend in friends %}
         <div class="friend">
           <img src="{{ url_for('static', filename=friend.image) }}" alt="{{ friend.name }}" class="{% if 'default_profile.jpg' in friend.image %}defaultProfile{% endif %}">

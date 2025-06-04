@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment - {{ event.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='pay.css') }}">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('dashboard') }}"><h1>EventHub</h1></a>
+    <div class="headerActions">
+      <form class="searchBar" method="GET" action="{{ url_for('search') }}">
+        <input type="text" name="q" placeholder="Search events or friends...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="icons">
+        <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
+        <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
+      </div>
+    </div>
+  </header>
+  <div class="paymentContainer">
+    <h2>Payment</h2>
+    <p><strong>Event:</strong> {{ event.title }}</p>
+    <p><strong>Date:</strong> {{ event.datetime[:10] }}</p>
+    <p><strong>Time:</strong> {{ event.datetime[11:16] }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Tickets:</strong> {{ quantity }}</p>
+    <p><strong>Total Price:</strong> ${{ "%.2f"|format(total_price) }}</p>
+
+    <form action="{{ url_for('confirm') }}" method="POST">
+      <label for="cardNumber">Card Number</label>
+      <input type="text" id="cardNumber" name="cardNumber" maxlength="16" pattern="\d{13,16}" required>
+
+      <div class="expCvvGroup">
+        <div class="expInput">
+          <label for="expMonth">Exp. Month</label>
+          <input type="number" id="expMonth" name="expMonth" min="1" max="12" required>
+        </div>
+        <div class="expInput">
+          <label for="expYear">Exp. Year</label>
+          <input type="number" id="expYear" name="expYear" min="2025" max="2099" required>
+        </div>
+        <div class="cvvInput">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" maxlength="4" required>
+        </div>
+      </div>
+
+      <input type="hidden" name="name" value="{{ name }}">
+      <input type="hidden" name="email" value="{{ email }}">
+      <input type="hidden" name="quantity" value="{{ quantity }}">
+      <input type="hidden" name="event_id" value="{{ event.id }}">
+
+      <label for="cardHolder">Cardholder Name</label>
+      <input type="text" id="cardHolder" name="cardHolder" required>
+
+      <button type="submit">Confirm Payment</button>
+    </form>
+  </div>
+</body>
+</html>
