@@ -63,7 +63,9 @@
       <div class="friendsContainer">
         {% for friend in friends %}
         <div class="friend">
-          <img src="{{ url_for('static', filename=friend.image) }}" alt="{{ friend.name }}" class="{% if 'default_profile.jpg' in friend.image %}defaultProfile{% endif %}">
+          <a href="{{ url_for('friendProfile', email=friend.email|urlencode) }}">
+            <img src="{{ url_for('static', filename=friend.image) }}" alt="{{ friend.name }}" class="{% if 'default_profile.jpg' in friend.image %}defaultProfile{% endif %}">
+          </a>
           <p>{{ friend.name }}</p>
         </div>
         {% endfor %}

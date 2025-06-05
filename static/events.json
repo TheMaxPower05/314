@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Summer Festival",
+    "title": "Festival",
     "description": "A vibrant celebration featuring music, food, and fun summer activities for all ages.",
-    "datetime": "2025-06-10T18:00:00",
+    "datetime": "2025-06-10T18:00",
     "image": "images/sample1.jpg",
     "organiser": "kpham2004@hotmail.com",
     "location": "Sydney, NSW",
@@ -198,5 +198,15 @@
     "organiser": "gupe@gupe.com",
     "location": "Perth, WA",
     "price": 30.0
+  },
+  {
+    "id": 22,
+    "title": "cool",
+    "description": "hozier",
+    "datetime": "23423-04-23T14:34",
+    "image": "images/login_banner.jpg",
+    "organiser": "boo@boo.com",
+    "location": "Wollongong, New South Wales",
+    "price": 23.0
   }
 ]

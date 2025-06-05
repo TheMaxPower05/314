@@ -57,7 +57,7 @@ header h1 {
   margin-left: 10px;
 }
 
-.profile {
+.headerProfilePic {
 
   width: 30px;
   height: 30px;
@@ -79,7 +79,9 @@ header h1 {
   align-items: center;
   min-height: 100vh;
   background: #f9f9f9;
-  color: black
+  color: black;
+  padding-top: 60px;
+  box-sizing: border-box;
 
 }
 
@@ -92,9 +94,12 @@ header h1 {
   margin-left: 35%;
 
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.profileCard img {
+.pfp {
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -131,16 +136,32 @@ header h1 {
 }
 
 .profileCard ul li {
-  background: #f1f1f1;
-  margin-bottom: 6px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: #444;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: #f1f1f1;
+  margin-bottom: 6px;
   gap: 10px;
 
+
+
+}
+
+.eventEdit{
+  padding: 6px 10px;
+  background-color: #77707182;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto; 
+
+}
+
+.eventEdit:hover {
+  background-color: #777071c4;
 }
 
 .friendCard {
@@ -155,17 +176,41 @@ header h1 {
 .friendCard h4{
   margin-top: 4px;
   margin-bottom: -2px;
+  text-align: center;
 }
 
 .friendPic {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
 
+.friendList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #e0e0e0; 
+  padding: 10px;
+  border-radius: 8px;
+  justify-content: flex-start;
+}
+
+.friendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  text-align: center;
+  background-color: #d3d3d3;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .backLink {
   display: center;
+  margin-top: 30px; 
   padding: 12px 20px;
   background-color: #007bff;
   color: white;
@@ -175,6 +220,7 @@ header h1 {
   font-weight: 550;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .events{
@@ -183,7 +229,18 @@ header h1 {
   color: black
 
 }
+.buttonGroup {
+  display: flex;
+  gap: 8px;
 
+  
+  
+}
+
+.eventTitle {
+  flex: 1;
+  font-weight: 500;
+}
 
 
 .cancelBtn {
@@ -199,6 +256,8 @@ header h1 {
 .cancelBtn:hover {
   background-color: #c82333;
 }
+
+
 
 .modal {
   display: none;

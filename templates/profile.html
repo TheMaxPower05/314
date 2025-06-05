@@ -45,14 +45,29 @@
         function closeEditModal() {
         document.getElementById("editModal").style.display = "none";
         }
+        
+        function openEditEventModal(event) {
+        document.getElementById('editEventModal').style.display = 'flex';
+        document.getElementById('editEventId').value = event.id;
+        document.getElementById('editEventTitle').value = event.title;
+        document.getElementById('editEventDescription').value = event.description;
+        document.getElementById('editEventDatetime').value = event.datetime;
+        document.getElementById('editEventLocation').value = event.location;
+        document.getElementById('editEventPrice').value = event.price;
+        }
 
-        // Optional: Close on background click
+        function closeEditEventModal() {
+        document.getElementById('editEventModal').style.display = 'none';
+        }
+
         window.onclick = function(event) {
-        let modal = document.getElementById("editModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
+        const editModal = document.getElementById("editModal");
+        const eventModal = document.getElementById("editEventModal");
+        if (event.target === editModal) editModal.style.display = "none";
+        if (event.target === eventModal) eventModal.style.display = "none";
         }
-        }
+
+        
     </script>
 
 
@@ -70,13 +85,13 @@
         <div class="icons">
             <a href="#"><img src="{{ url_for('static', filename='images/setting.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
             <a href="#"><img src="{{ url_for('static', filename='images/cart.png') }}" class="icon" onmouseout="this.style.filter='invert(0)'"></a>
-            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="profile" onmouseout="this.style.filter='invert(0)'"> </a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename=profile_pic) }}" class="headerProfilePic" onmouseout="this.style.filter='invert(0)'"> </a>
         </div>
         </div>
     </header>
 
     <div class="profileCard">
-        <img src="{{ url_for('static', filename=profile_pic) }}" alt="Profile Picture"><br>
+        <img src="{{ url_for('static', filename=profile_pic) }}" class ="pfp" alt="Profile Picture"><br>
         <button class="editBtn" onclick="openEditModal()">Edit Profile</button>
         <div class="modal" id="editModal">
             <div class="modalContent">
@@ -98,17 +113,19 @@
 
        <div class="profileSection">
             <h3>Friends</h3>
-            {% if friendProfiles %}
+            <div class="friendCard">
+            <div class="friendList">
                 {% for friend in friendProfiles %}
-                    <div class="friendCard">
-                        <img src="{{ url_for('static', filename=friend.profilePic) }}" alt="{{ friend.name }}" class="friendPic">
-                        <h4>{{ friend.name }}</h4>
-
-                    </div>
+                <div class="friendItem">
+                <a href="{{ url_for('friendProfile', email=friend.email|urlencode) }}">
+                    <img src="{{ url_for('static', filename=friend.profilePic) }}" alt="{{ friend.name }}" class="friendPic">
+                </a>
+                    
+                <h4>{{ friend.name }}</h4>
+                </div>
                 {% endfor %}
-            {% else %}
-                <p>No friends added.</p>
-            {% endif %}
+            </div>
+            </div>
         </div>
 
         <div class="profileSection">
@@ -135,7 +152,10 @@
                     {% for event in organisedEvents %}
                         <li>
                             <a href="{{ url_for('tickets', eventId=event.id) }}" class="events">{{ event.title }}</a>
-                            <button onclick="confirmDeleteEvent('{{ event.title }}', '{{ event.id }}')" class="cancelBtn">Cancel</button>
+                            <div class="buttonGroup">
+                                <button onclick='openEditEventModal({{ event|tojson|safe }})' class="eventEdit">Edit</button>
+                                <button onclick="confirmDeleteEvent('{{ event.title }}', '{{ event.id }}')" class="cancelBtn">Cancel</button>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
@@ -144,6 +164,24 @@
             {% endif %}
         </div>
         {% endif %}
+
+
+        <div class="modal" id="editEventModal">
+            <div class="modalContent">
+                <h3>Edit Event</h3>
+                <form id="editEventForm" action="/editEvent" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="editEventId">
+                <input type="text" name="title" id="editEventTitle" placeholder="Title" required><br><br>
+                <textarea name="description" id="editEventDescription" placeholder="Description" required></textarea><br><br>
+                <input type="datetime-local" name="datetime" id="editEventDatetime" required><br><br>
+                <input type="text" name="location" id="editEventLocation" placeholder="Location" required><br><br>
+                <input type="number" step="0.01" name="price" id="editEventPrice" placeholder="Price" required><br><br>
+                <input type="file" name="image"><br><br>
+                <button type="submit" class="confirmBtn">Save Changes</button>
+                <button type="button" onclick="closeEditEventModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
 
         <div id="confirmModal" class="modal">
             <div class="modalContent">
@@ -154,6 +192,8 @@
         </div>
 
         <a class="backLink" href="{{ url_for('dashboard') }}">Home</a>
+        <a class="backLink" href="{{ url_for('logout') }}">Logout</a>
+
     </div>
 </body>
 </html>

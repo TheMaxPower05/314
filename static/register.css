@@ -1,107 +1,94 @@
-.logo-container {
-    position: relative;
-    height: 200px;
-    width: 100%;
-    background-color: #f0f0f0; 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.logo {
-    position: absolute;
-    height: 100%;
-    left: 0px;    
-    top: 0px;    
-    object-fit: contain;
+main {
+  display: flex;
+  width: 100%;
+}
+
+section {
+  flex: 1;
+  padding: 60px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
 }
 
 .register {
-    height: 500px;
-    font-size: 100px;
-    margin-left: 100px; 
-    margin-top: 100px;
+  font-size: 50px;
+  margin-bottom: 30px;
 }
 
-.info {
-    font-size: 20px;
-    margin-left: 100px; 
-    margin-top: -400px;
+.info .container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.email {
-    margin-right:49px;
+.info label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.password {
-    margin-right:20px;
+.info input,
+.info select {
+  padding: 10px;
+  width: 300px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.fpassword {
-    font-size: 15px; 
-    text-decoration: none;
-    margin-left: 96px;
-    display: inline-block;
+.signupBtn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signupBtn:hover {
+  background-color: #0056b3;
 }
 
 .login {
-    font-size: 15px; 
-    text-decoration: none;
-    margin-left: 190px;
-    display: inline-block;
+  font-size: 14px;
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.2s;
+  margin-top: 10px;
 }
 
-input {
-    margin-left: 30px;
+.login:hover {
+  color: #0056b3;
 }
 
-.container {
-    display: flex;
-    align-items: right;
-    margin-bottom: 15px;
-}
-
-.container label {
-    width: 150px;
-    text-align: left;
-    margin-right: 10px;
-}
-
-.container input,
-.container select {
-    width: 250px;
-    padding: 5px;
-    font-size: 16px;
-    margin-left: 30px;
-}
-
-/* Dropdown styling */
-select {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-/* Optional: add arrow styling with background image, or use system default */
-
-.signupBtn {
-    margin-left: 190px;
-    width: 130px;
-    height: 30px;
+main::after {
+  content: "";
+  flex: 1;
+  background: url('/static/images/login_banner.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 .error-panel {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    margin: 20px auto;
-    width: fit-content;
-    border-radius: 5px;
-    font-weight: bold;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  z-index: 10;
 }

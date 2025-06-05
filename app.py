@@ -3,6 +3,8 @@ import json
 import os
 import re
 from werkzeug.utils import secure_filename
+from urllib.parse import quote, unquote
+
 
 
 
@@ -15,14 +17,12 @@ USERS_FILE = 'users.json'
 with open('static/events.json') as f:
     events = json.load(f)
 
-# Load user data
 def load_users():
     if os.path.exists(USERS_FILE):
         with open(USERS_FILE, 'r') as f:
             return json.load(f)
     return {}
 
-# Save user data
 def save_users(users):
     with open(USERS_FILE, 'w') as f:
         json.dump(users, f, indent=4)
@@ -59,15 +59,16 @@ def dashboard():
     with open('static/events.json') as f:
         events = json.load(f)
 
-    # Only organiser sees their own events
     if role == "organiser":
         events = [e for e in events if e["organiser"] == user_email]
 
     friend_emails = user.get("friends", [])
     friends = [
         {
+            "email": email,
             "name": users[email]["first_name"],
             "image": users[email].get("profile_pic", "") or "images/defaultProfile.png"
+            
         } for email in friend_emails if email in users
     ]
 
@@ -81,7 +82,7 @@ def register():
         fname = request.form['fname']
         lname = request.form['lname']
         password = request.form['password']
-        role = request.form['role']  # from dropdown
+        role = request.form['role']  
 
         with open('users.json') as f:
             users = json.load(f)
@@ -165,7 +166,6 @@ def rPass():
 def search():
     query = request.args.get('q', '').lower()
 
-    # Load users and events
     with open("users.json") as f:
         users = json.load(f)
 
@@ -177,19 +177,21 @@ def search():
     with open("static/events.json") as f:
         events = json.load(f)
 
-    # Match events by title
     matched_events = [event for event in events if query in event['title'].lower() or query in event['location'].lower()]
 
     matched_users = []
     for email,user_info in users.items():
         if (
+
             query in user_info.get("first_name", "").lower() or
             query in user_info.get("last_name", "").lower()
         ):
             matched_users.append({
+                "email": email,
                 "name": f"{user_info['first_name']} {user_info['last_name']}",
                 "image": user_info.get("profile_pic") or "images/defaultProfile.png"
             })
+
     return render_template(
         'eventSearch.html',
         events=matched_events,
@@ -471,7 +473,7 @@ def deleteEvent(eventId):
 
 
 @app.route('/editProfile', methods=['POST'])
-def edit_profile():
+def editProfile():
     if 'user' not in session:
         return redirect(url_for('login'))
 
@@ -484,13 +486,11 @@ def edit_profile():
     if not user:
         return redirect(url_for('login'))
 
-    # Get form data (can be empty)
     new_email = request.form.get('email', '').strip()
     first_name = request.form.get('first_name', '').strip()
     last_name = request.form.get('last_name', '').strip()
     file = request.files.get('profilePic')
 
-    # Update fields only if provided
     if first_name:
         user['first_name'] = first_name
     if last_name:
@@ -502,7 +502,6 @@ def edit_profile():
         file.save(file_path)
         user['profile_pic'] = f'images/{filename}'
 
-    # If new email is provided and different
     if new_email and new_email != old_email:
         users[new_email] = user
         del users[old_email]
@@ -515,55 +514,109 @@ def edit_profile():
 
     return redirect(url_for('profile'))
 
-@app.route('/viewProfile/<email>')
-def viewProfile(email):
-    if 'user' not in session:
-        return redirect(url_for('login'))
-
-    current_user_email = session['user']
-
+@app.route('/friend/<path:email>', methods=['GET', 'POST'])
+def friendProfile(email):
+    print("Requested email:", email)
+    
+    email = unquote(email)  
     users = load_users()
-    if email in users:
-        user = users[email]
-        return render_template('viewProfile.html', user=user, email=email)
-    else:
+    currentUser = session.get('user')
+
+    if not currentUser or email not in users:
         abort(404)
 
-    user = users.get(email)
-    if not user:
-        return "User not found", 404
+    profile = users[email]
+    current_user = users[currentUser]
+    is_friend = email in current_user.get('friends', [])
 
-    current_user = users.get(current_user_email)
+    profile_pic = current_user.get("profile_pic", "images/default_profile.jpg")
 
-    is_friend = email in current_user.get("friends", [])
+    return render_template(
+        'friendPfp.html',
+        profile=profile,
+        profile_email=email,
+        is_friend=is_friend,
+        profile_pic=profile_pic
+    )
 
-    return render_template("friendPfp.html",
-                           profile=user,
-                           profile_email=email,
-                           is_friend=is_friend,
-                           current_user_email=current_user_email,
-                           profile_pic=user.get("profile_pic", "images/default_profile.jpg"))
-
-@app.route('/addFriend/<email>', methods=['POST'])
+@app.route('/addFriend/<path:email>', methods=['POST'])
 def addFriend(email):
-    if 'user' not in session:
-        return redirect(url_for('login'))
+    email = unquote(email)
+    users = load_users()
+    currentUser = session.get('user')
 
-    current_user_email = session['user']
+    if not currentUser or email not in users:
+        abort(404)
 
-    with open('users.json', 'r') as f:
-        users = json.load(f)
+    if email not in users[currentUser].get('friends', []):
+        users[currentUser].setdefault('friends', []).append(email)
 
-    if email not in users or current_user_email not in users:
-        return "User not found", 404
+        users[email].setdefault('friends', []).append(currentUser)
 
-    if email not in users[current_user_email]['friends']:
-        users[current_user_email]['friends'].append(email)
+        with open('users.json', 'w') as f:
+            json.dump(users, f, indent=4)
+
+    return redirect(url_for('friendProfile', email=email))
+
+@app.route('/removeFriend/<path:email>', methods=['POST'])
+def removeFriend(email):
+    email = unquote(email)
+    users = load_users()
+    currentUser = session.get('user')
+
+    if not currentUser or email not in users:
+        abort(404)
+
+    if email in users[currentUser].get('friends', []):
+        users[currentUser]['friends'].remove(email)
+
+    if currentUser in users[email].get('friends', []):
+        users[email]['friends'].remove(currentUser)
 
     with open('users.json', 'w') as f:
-        json.dump(users, f, indent=2)
+        json.dump(users, f, indent=4)
 
-    return redirect(url_for('viewPfp', email=email))
+    return redirect(url_for('friendProfile', email=email))
+
+
+from flask import request, redirect, url_for
+from werkzeug.utils import secure_filename
+import json
+import os
+
+@app.route('/editEvent', methods=['POST'])
+def editEvent():
+    event_id = int(request.form['id'])
+    title = request.form['title']
+    description = request.form['description']
+    datetime = request.form['datetime']
+    location = request.form['location']
+    price = request.form['price']
+    image = request.files.get('image')
+
+    events_path = os.path.join('static', 'events.json')
+
+    with open(events_path, 'r') as f:
+        events = json.load(f)
+
+    for event in events:
+        if event['id'] == event_id:
+            event['title'] = title
+            event['description'] = description
+            event['datetime'] = datetime
+            event['location'] = location
+            event['price'] = price
+
+            if image and image.filename != '':
+                filename = secure_filename(image.filename)
+                image.save(os.path.join('static', 'images', filename))
+                event['image'] = f'images/{filename}'
+            break
+
+    with open(events_path, 'w') as f:
+        json.dump(events, f, indent=2)
+
+    return redirect(url_for('profile'))
 
 
 if __name__ == '__main__':

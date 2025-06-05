@@ -230,13 +230,20 @@
         "last_name": "dude",
         "password": "test",
         "role": "attendee",
-        "friends": [],
+        "friends": [
+            "kpham2004@hotmail.com"
+        ],
         "profile_pic": "images/Screenshot_2025-03-19_234223.png",
         "attendingEvents": [
             {
                 "eventId": "1",
                 "eventName": "Summer Festival",
                 "ticketCount": 5
+            },
+            {
+                "eventId": "15",
+                "eventName": "Sustainability Forum",
+                "ticketCount": 3
             }
         ]
     },
@@ -246,7 +253,9 @@
         "password": "dude",
         "role": "organiser",
         "friends": [
-            "s"
+            "s",
+            "test@test.com",
+            "boo@boo.com"
         ],
         "profile_pic": "images/friend4.jpg",
         "attendingEvents": [
@@ -269,6 +278,23 @@
                 "eventId": "21",
                 "eventName": "Baking",
                 "ticketCount": 3
+            }
+        ]
+    },
+    "boo@boo.com": {
+        "first_name": "Kai",
+        "last_name": "Pham",
+        "password": "g",
+        "role": "organiser",
+        "friends": [
+            "kpham2004@hotmail.com"
+        ],
+        "profile_pic": "images/friend2.avif",
+        "attendingEvents": [
+            {
+                "eventId": "22",
+                "eventName": "cool",
+                "ticketCount": 5
             }
         ]
     }
